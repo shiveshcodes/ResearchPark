@@ -1,0 +1,82 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/customer.css' %}">
+</head>
+<body>
+    <h1 class="header">Client View</h1>
+
+    <div class="table-wrap">
+    
+    <form method="post" class="filtersort">
+      {% csrf_token %}
+      <select name="sort_by" id="sort_by">
+        <option value="name">Name</option>
+        <option value="email">Email</option>
+        <option value="type">Status</option>
+      </select>
+      <select name="sort_order" id="sort_order">
+        <option value="ASC" >Acsending (A-Z)</option>
+        <option value="DES" selected>Descending (Z-A)</option>
+      </select>
+    
+      <select name="filter" id="filter">
+        <option value="ALL" default>All</option>
+        {%for option in options%}
+        <option value="{{option.0}}">{{option.1}}</option>
+        {%endfor%}
+      </select>
+    </form>
+    <table class="customer-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{customer.name}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.phone}}</td>
+                <td>{{customer.type}}</td>
+              </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+
+    </div>
+
+
+<script>
+  const sort_by = document.getElementById('sort_by');
+  const sort_order = document.getElementById('sort_order');
+  const filter = document.getElementById('filter');
+  sort_by.querySelector(`option[value={{sort_by}}]`).selected = true;
+  sort_order.querySelector(`option[value={{sort_order}}]`).selected = true;
+  filter.querySelector(`option[value={{filter}}]`).selected = true;
+
+
+  const form = document.querySelector('.filtersort');
+  const select = Array.from(document.getElementsByTagName('select'));
+  select.map((item) => {
+    item.addEventListener('change', () => {
+      form.submit();
+    })
+  })
+
+</script>
+    
+</body>
+</html>

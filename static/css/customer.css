@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+.table-wrap{
+    width: 80%;
+    margin: 10% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filtersort{
+    margin-bottom: 20px;
+}
+
+.filtersort select{
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.customer-table{
+    border-collapse: collapse;
+    border: 2px solid #333 ;
+   
+}
+
+.customer-table th{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.customer-table td{
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #333 ;
+}
