@@ -3,4 +3,4 @@ STATUS_CHOICES = [
         ('POTENTIAL', 'Potential'),
         ('INACTIVE', 'Inactive'),
         ('PREVIOUS', 'Previous'),
-    ]
+    ] # create STATUS_CHOICES tuple
